@@ -1,0 +1,29 @@
+// OSS_ANDROID_TEMPLATE_FILE_HEADER
+/**
+ * New java-publish gradle script
+ *
+ * 1. Provide RELEASE_REPOSITORY_URL and SNAPSHOT_REPOSITORY_URL with gradle.properties or local.properties.
+ * 2. Provide REPOSITORY_USERNAME and REPOSITORY_PASSWORD if needed.
+ */
+apply plugin: "com.gradle.plugin-publish"
+apply plugin: 'signing'
+
+version = "0.4.10.f"                    //配置插件的版本号
+group = "com.tencent.matrix"            //插件的群组，插件的classpath会用到
+
+pluginBundle {
+
+    website = 'https://github.com/frendyxzc'
+    vcsUrl = 'https://github.com/frendyxzc/matrix.git'
+    description = 'APM matrix'          //插件描述
+    tags = ['apm', 'matrix']            //插件的tag。可以通过这个在插件门户上搜索
+
+    plugins {
+        greetingsPlugin {
+            id = 'gb.gz.matrix-plugin'  //插件的id，到时候apply的插件id
+            displayName = 'Matrix Plugin'
+        }
+    }
+}
+
+apply from: rootProject.file('gradle/check.gradle')
